@@ -9,16 +9,40 @@
 
         <button class="btn-more" {{action "goToJob" job}}>More</button>
     </div>
-    <div class="console">
-        <pre>{{json-pretty data=job}}</pre>
-    </div>
+
     {{#if job.error}}
-    <div class="error">
-        <div class="title">Error</div>
-        <div class="error-output">
+        <div class="error">
+          <div class="title">Error</div>
+          <div class="error-output">
             {{format-error job.error}}
+          </div>
         </div>
+    {{/if}}
+
+      <a href="javascript:void(0)" class="btn show-logs" {{action "switchView"}}>
+        {{#if showLogs}}
+          Show content
+        {{/if}}
+        {{#unless showLogs}}
+          Show logs
+        {{/unless}}
+      </a>
+
+  {{#if showLogs}}
+    <div class="log">
+      <div class="title">Log</div>
+        {{#each log as |row|}}
+          {{{row}}}
+        {{/each}}
     </div>
     {{/if}}
+
+    {{#unless showLogs}}
+    <div class="console">
+      <div class="title">Content</div>
+      <pre>{{json-pretty data=job}}</pre>
+    </div>
+    {{/unless}}
+
     <button class="btn-remove" {{action "removeJob" job}}>Delete</button>
 </div>

@@ -108,6 +108,13 @@ export default Service.extend({
       });
   },
 
+  getLog(id){
+      return this.request({
+          method: 'GET',
+          url: `job/${id}/log`
+      });
+  },
+
   findOne(opts={}) {
       return this.request({
           method: 'GET',

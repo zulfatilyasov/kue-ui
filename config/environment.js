@@ -25,7 +25,7 @@ module.exports = function(environment) {
     authMaker: {},
 
     apiURL: '/kue-api',
-    updateInterval: 10000,
+    updateInterval: 3000,
 
     'ember-cli-notifications': {
       includeFontAwesome: true
